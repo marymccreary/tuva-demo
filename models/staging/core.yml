@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: core
+    schema: core
+    tables:
+      - name: condition
+      - name: medical_claim
+      - name: patient
+

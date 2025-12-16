@@ -1,0 +1,89 @@
+icd10_code,description,cancer_type
+C00,Malignant neoplasm of lip,Head & neck cancer
+C01,Malignant neoplasm of base of tongue,Head & neck cancer
+C02,Malignant neoplasm of other and unspecified parts of tongue,Head & neck cancer
+C03,Malignant neoplasm of gum,Head & neck cancer
+C04,Malignant neoplasm of floor of mouth,Head & neck cancer
+C05,Malignant neoplasm of palate,Head & neck cancer
+C06,Malignant neoplasm of other and unspecified parts of mouth,Head & neck cancer
+C07,Malignant neoplasm of parotid gland,Head & neck cancer
+C08,Malignant neoplasm of other and unspecified major salivary glands,Head & neck cancer
+C09,Malignant neoplasm of tonsil,Head & neck cancer
+C10,Malignant neoplasm of oropharynx,Head & neck cancer
+C11,Malignant neoplasm of nasopharynx,Head & neck cancer
+C12,Malignant neoplasm of pyriform sinus,Head & neck cancer
+C13,Malignant neoplasm of hypopharynx,Head & neck cancer
+C14,"Malignant neoplasm of other and ill-defined sites in the lip, oral cavity and pharynx",Head & neck cancer
+C15,Malignant neoplasm of esophagus,Esophageal cancer
+C16,Malignant neoplasm of stomach,Stomach cancer
+C17,Malignant neoplasm of small intestine,Gastrointestinal cancer
+C18,Malignant neoplasm of colon,Colorectal cancer
+C19,Malignant neoplasm of rectosigmoid junction,Colorectal cancer
+C20,Malignant neoplasm of rectum,Colorectal cancer
+C21,Malignant neoplasm of anus and anal canal,Colorectal cancer
+C22,Malignant neoplasm of liver and intrahepatic bile ducts,Liver cancer
+C23,Malignant neoplasm of gallbladder,Hepatobiliary cancer
+C24,Malignant neoplasm of other and unspecified parts of biliary tract,Hepatobiliary cancer
+C25,Malignant neoplasm of pancreas,Pancreatic cancer
+C26,Malignant neoplasm of other and ill-defined digestive organs,Gastrointestinal cancer
+C30,Malignant neoplasm of nasal cavity and middle ear,Head & neck cancer
+C31,Malignant neoplasm of accessory sinuses,Head & neck cancer
+C32,Malignant neoplasm of larynx,Head & neck cancer
+C33,Malignant neoplasm of trachea,Lung cancer
+C34,Malignant neoplasm of bronchus and lung,Lung cancer
+C37,Malignant neoplasm of thymus,Thoracic cancer
+C38,"Malignant neoplasm of heart, mediastinum and pleura",Thoracic cancer
+C40,Malignant neoplasm of bone and articular cartilage of limbs,Bone cancer
+C41,Malignant neoplasm of bone and articular cartilage of other sites,Bone cancer
+C43,Malignant melanoma of skin,Skin cancer
+C44,Other malignant neoplasms of skin,Skin cancer
+C45,Mesothelioma,Thoracic cancer
+C46,Kaposi sarcoma,Soft tissue cancer
+C47,Malignant neoplasm of peripheral nerves,Soft tissue cancer
+C48,Malignant neoplasm of retroperitoneum and peritoneum,Soft tissue cancer
+C49,Malignant neoplasm of other connective and soft tissue,Soft tissue cancer
+C50,Malignant neoplasm of breast,Breast cancer
+C51,Malignant neoplasm of vulva,Gynecologic cancer
+C52,Malignant neoplasm of vagina,Gynecologic cancer
+C53,Malignant neoplasm of cervix uteri,Gynecologic cancer
+C54,Malignant neoplasm of corpus uteri,Gynecologic cancer
+C55,"Malignant neoplasm of uterus, part unspecified",Gynecologic cancer
+C56,Malignant neoplasm of ovary,Gynecologic cancer
+C57,Malignant neoplasm of other female genital organs,Gynecologic cancer
+C58,Malignant neoplasm of placenta,Gynecologic cancer
+C60,Malignant neoplasm of penis,Genitourinary cancer
+C61,Malignant neoplasm of prostate,Prostate cancer
+C62,Malignant neoplasm of testis,Genitourinary cancer
+C63,Malignant neoplasm of other male genital organs,Genitourinary cancer
+C64,Malignant neoplasm of kidney,Kidney cancer
+C65,Malignant neoplasm of renal pelvis,Urinary tract cancer
+C66,Malignant neoplasm of ureter,Urinary tract cancer
+C67,Malignant neoplasm of bladder,Bladder cancer
+C68,Malignant neoplasm of other urinary organs,Urinary tract cancer
+C69,Malignant neoplasm of eye and adnexa,Eye cancer
+C70,Malignant neoplasm of meninges,CNS cancer
+C71,Malignant neoplasm of brain,CNS cancer
+C72,Malignant neoplasm of spinal cord and other CNS,CNS cancer
+C73,Malignant neoplasm of thyroid gland,Thyroid cancer
+C74,Malignant neoplasm of adrenal gland,Endocrine cancer
+C75,Malignant neoplasm of other endocrine glands,Endocrine cancer
+C76,Malignant neoplasm of other ill-defined sites,Other cancer
+C77,Secondary malignant neoplasm of lymph nodes,Metastatic cancer
+C78,Secondary malignant neoplasm of respiratory and digestive organs,Metastatic cancer
+C79,Secondary malignant neoplasm of other sites,Metastatic cancer
+C80,Malignant neoplasm without specification of site,Other cancer
+C81,Hodgkin lymphoma,Hematologic cancer
+C82,Follicular lymphoma,Hematologic cancer
+C83,Non-follicular lymphoma,Hematologic cancer
+C84,Mature T/NK-cell lymphomas,Hematologic cancer
+C85,Other lymphomas,Hematologic cancer
+C86,Other specified T/NK-cell lymphomas,Hematologic cancer
+C88,Malignant immunoproliferative diseases,Hematologic cancer
+C90,Multiple myeloma and plasma cell neoplasms,Hematologic cancer
+C91,Lymphoid leukemia,Leukemia
+C92,Myeloid leukemia,Leukemia
+C93,Monocytic leukemia,Leukemia
+C94,Other leukemias,Leukemia
+C95,Leukemia of unspecified cell type,Leukemia
+C96,"Other and unspecified malignant neoplasms of lymphoid, hematopoietic tissue",Hematologic cancer
+C97,Malignant neoplasms of independent (primary) multiple sites,Other cancer

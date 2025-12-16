@@ -1,63 +1,76 @@
-[![Apache License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) ![dbt logo and version](https://img.shields.io/static/v1?logo=dbt&label=dbt-version&message=1.5.x&color=orange)
+## 🤝 Mary's Take Home Project
 
-# The Tuva Project Demo
+Staging tables
 
-## 🧰 What does this project do?
+Created staging tables off of the source tables
+core.condition 
+core.patient
+core.medical_claims
 
-This demo provides a quick and easy way to run the Tuva Project 
-Package in a dbt project with synthetic data for 1k patients loaded as dbt seeds.
+In the staging tables we pull in only the populated columns from the source tables
+Columns are cast to their respective data types
+Renamed for consistency 
+   - timestamps end in "_at"
+   - booleans begin with "_is" or "_has"
+   - columns like 'status' which are reserved words in sql are converted to names like 'condition_status'
+   - columns for internal purposes start with an underscore 
+   - columns orderd by: ids, booleans, varchars, ints/numbers, dates, timestamps
+Add additional columns for reporting ease of use ( for example, adding a specific column for the icd-10 code to avoid having to check for the code type each time)
 
-To set up the Tuva Project with your own claims data or to better understand what the Tuva Project does, please review the ReadMe in [The Tuva Project](https://github.com/tuva-health/the_tuva_project) package for a detailed walkthrough and setup.
 
-For information on the data models check out our [Docs](https://thetuvaproject.com/).
+Intermediate
 
-## ✅ How to get started
+Here I'm doing a simple search for patients who are alive who have an active condition where the icd code matches a list of cancer icd codes.  
 
-### Pre-requisites
-You only need one thing installed:
-1. [uv](https://docs.astral.sh/uv/getting-started/) - a fast Python package manager. Installation is simple and OS-agnostic:
-   ```bash
-   curl -LsSf https://astral.sh/uv/install.sh | sh
-   ```
-   Or on Windows:
-   ```powershell
-   powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-   ```
+In a real reporting environment, I might not just search their condition list, but also search for encounter and claim codes, as physicians may not always be diligent about keeping the problem list up to date. Additionally, you might add a time contraint, like conditions added in the last three years or so. 
 
-**Note:** This demo uses DuckDB as the database, so you don't need to configure a connection to an external data warehouse. Everything is configured and ready to go!
+For simplicity (aka test time restriction), patients who may have multiple cancers are being limited to their most recently recorded cancer for the purposes of this test. 
 
-### Getting Started
-Complete the following steps to run the demo:
+Mart
 
-1. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repo to your local machine or environment.
-2. In the project directory, install Python dependencies and set up the virtual environment:
-   ```bash
-   uv sync
-   ```
-3. Activate the virtual environment:
-   ```bash
-   source .venv/bin/activate  # On macOS/Linux
-   # or on Windows:
-   .venv\Scripts\activate
-   ```
-4. Run `dbt deps` to install the Tuva Project package:
-   ```bash
-   dbt deps
-   ```
-5. Run `dbt build` to run the entire project with the built-in sample data:
-   ```bash
-   dbt build
-   ```
+This mart, oncology_patient_claims, brings together patient demographic information with their claims info, so that we can find out more about who is racking in the highest costs. 
 
-The `profiles.yml` file is already included in this repo and pre-configured for DuckDB, so no additional setup is needed!
+This mart is inelegant! I acknowledge that, but wanted to stick to the time limit
+Right now the mart is just pulling any claims for cancer patients after the cancer digagnosis was added to their conditions. 
+Obviously this isn't quite correct, as there can be encounters not realted to their cancer among those, like if they were to break their arm. 
+A better way to do this would have been to find claims on encounters where the encounter had a cancer diagnosis attached.
 
-### Using uv commands
-You can also run dbt commands directly with `uv run` without activating the virtual environment:
-```bash
-uv run dbt deps
-uv run dbt build
-```
 
-## 🤝 Community
+## Findings
 
-Join our growing community of healthcare data practitioners on [Slack](https://join.slack.com/t/thetuvaproject/shared_invite/zt-16iz61187-G522Mc2WGA2mHF57e0il0Q)!
+Of all the money paid for active cancer patient claims:
+83% of the total was spent on prostate cancer patients
+39% of the total was spent on prostate cancer patients in the 70-79 age range
+
+Cost is divided between patient sex, 57% male and 43% female
+
+36% of costs were incurred in an outpatient setting, while 29% were inpatient 
+
+
+Slicing and dicing of numbers was calculated with a query like so: 
+
+SELECT
+    service_category_1,
+    SUM(paid_amount_cents) AS total_paid,
+    ROUND( SUM(paid_amount_cents) / SUM(SUM(paid_amount_cents)) OVER () * 100, 2) AS percent_of_total_paid
+FROM oncology_patient_claims
+GROUP BY 1
+ORDER BY percent_of_total_paid DESC
+
+## AI Usage 
+
+Pulled ICD 10 codes from https://www.cancertherapyadvisor.com/home/tools/oncology-icd10-codes/, and asked chat gpt to create a csv to categorize the icd-10 codes into cancer types based on simple organ based groupings 
+
+Used github copilot suggestions as they came up (autocomplete joins, select statements, etc)
+
+Used chatGPT to generate a query to calculate the percent_of_total_paid queries used in the findings 
+
+## What more I could have done
+
+This is currently super inelegant way to finding oncology claims, as I'm just finding every claim from oncology patients after their condition is recorded, instead of finding claims actually related to the cancer care. 
+
+Also, the tuva data marts seem like they might have had better ways of checking if a patient had multiple types of cancer, so exploring those pre-made marts is another thing I would have liked to spend more time on
+
+Also, I could do so much more documentation! There should be yml for all the models, the columns, and tests to make sure there are primary keys that are non null and unique. 
+
+There were lots of fields that didn't seem to be populated - I'd want to go in and check why that data isn't flowing in and what can be done about it. 
